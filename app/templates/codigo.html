@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ code.numero }} - {{ code.nombre }}</title>
+    <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/x-icon">
+</head>
+<body class="bg-[#F8F7F4]">
+    <div class="container mx-auto py-8 mt-20">
+        <h1 class="text-4xl celu:text-xl text-center font-bold mb-6">{{ code.numero }} - {{ code.nombre }}</h1>
+        <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-md">
+            <img src="{{ code.imagen }}" alt="{{ code.nombre }}" class="celu:w-100 celu:h-100 tv:w-full tv:h-auto object-cover">
+            <div class="p-4">
+                <p class="text-xl celu:text-sm font-semibold">{{ code.descripcion }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-6">
+        <a href="javascript:history.go(-1)" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400">Volver atrás</a>
+    </div>
+
+    <footer class="text-center mt-10 tablet:mt-20 pc:mt-20 tv:mt-40 mb-10">
+        <a href="https://github.com/zfranco21"><img src="{{ url_for('static', filename='img/github.svg') }}" class="h-10 inline-block" alt="GitHub Logo"></a>
+        <h2 class="text-2xl celu:text-sm font-bold">Desarrollado por <a href="https://github.com/zfranco21"><span class="text-[#2D52D4]">ZFranco21</span></a></h2>
+    </footer>
+</body>
+</html>

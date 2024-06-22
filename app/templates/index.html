@@ -1,0 +1,43 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Status Codes</title>
+    <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/x-icon">
+</head>
+<body class="bg-[#F8F7F4]">
+    <div class="container mx-auto py-8 mt-20">
+        <h1 class="celu:text-xl tablet:text-4xl tv:text-4xl pc:text-4xl text-center font-bold mb-6">Codigos de Estado HTTP</h1>
+        <p class="celu:hidden text-center mb-20 tv:mx-16">Los <a href="https://developer.mozilla.org/es/docs/Web/HTTP/Status"><span class="text-[#2D52D4]">códigos de estado HTTP</span></a> son respuestas que los servidores envían para  indicar el resultado de las solicitudes de los navegadores. Comprender  estos códigos ayuda a diagnosticar y solucionar problemas en la web.
+            <span class="text-[#2D52D4]">En  esta página encontrarás explicaciones de los códigos más comunes.</span></p>
+        <!-- Barra de búsqueda -->
+        <form action="{{ url_for('search_codes') }}" method="GET" class="mb-20 tv:mx-60 pc:mx-60 tablet:mx-20 flex">
+            <input type="text" name="numero" placeholder="Buscar por código, ej. 200, 300, 500..." class="px-4 py-2 w-full rounded-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500">
+            <button type="submit" class="ml-2 px-4 py-2 bg-indigo-500 text-white rounded-md hover:bg-indigo-600 celu:text-sm">Buscar</button>
+        </form>
+
+        <!--Codigos de estado-->
+        <div class="grid celu:grid-cols-1 grid-cols-3 md:grid-cols-3 gap-4">
+            {% for code in codes %}
+            <a href="{{ url_for('codigo', codigo_id=code.id) }}">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md cursor-pointer">
+                    <img src="{{ code.imagen }}" alt="{{ code.nombre }}" class="w-full h-44 object-cover">
+                    <div class="p-4 celu:p-2">
+                        <h2 class="text-xl celu:text-sm font-semibold mb-2">{{ code.numero }} - {{ code.nombre }}</h2>
+                        <!-- <p class="text-gray-700">{{ code.descripcion }}</p> -->
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <footer class="text-center mt-10 mb-10">
+        <a href="https://github.com/zfranco21"><img src="{{ url_for('static', filename='img/github.svg') }}" class="h-10 inline-block" alt="GitHub Logo"></a>
+        <h2 class="text-2xl celu:text-sm font-bold">Desarrollado por <a href="https://github.com/zfranco21"><span class="text-[#2D52D4]">ZFranco21</span></h2></a>
+    </footer>
+</body>
+</html>
